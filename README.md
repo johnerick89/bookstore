@@ -1,5 +1,6 @@
 # bookstore
 Book Store service for setting up books, renting books and calculating rental charges
+Service deployed to heroku and how this is done
 ## Environment:
 - Python version: 3.7
 - Django version: 3.0.6
