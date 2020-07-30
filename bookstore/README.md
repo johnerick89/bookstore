@@ -94,9 +94,26 @@ $ python3 manage.py migrate
 # run app
 $ python3 manage.py runserver
 
+
 # run tests
 $ python3 manage.py test
 
 # run on heroku
 $ heroku local
 ```
+For python deployment your app should now be running on [127.0.0.1:8000](http://127.0.0.1:8000/) or 
+[localhost:8000](http://127.0.0.1:8000/) 
+For heroku deployment your app should now be running on [localhost:5000](http://localhost:5000/) or [0.0.0.0:5000](http://localhost:5000/) .
+
+## Deploying to Heroku
+
+```sh
+$ heroku create
+$ git push heroku master
+
+$ heroku run python manage.py migrate
+$ heroku open
+```
+or
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
