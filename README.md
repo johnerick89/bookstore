@@ -111,14 +111,16 @@ For heroku deployment your app should now be running on [localhost:5000](http://
 ## Deploying to Heroku
 
 ```sh
-$ heroku create
+$ heroku create bookstore-service-v1
 $ git push heroku master
 
 $ heroku run python manage.py migrate
 $ heroku open
 ```
-or
+
+Heroku deployments created as (version1, story 1):
+https://infinite-anchorage-41709.herokuapp.com/ | https://git.heroku.com/infinite-anchorage-41709.git
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-
+https://bookstore-service.herokuapp.com/ | https://git.heroku.com/bookstore-service.git
