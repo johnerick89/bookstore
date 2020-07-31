@@ -8,11 +8,20 @@ Service deployed to heroku and how this is done
 
 
 ## Data:
-Example of a book JSON object:
+Example of a book JSON object (v1):
 ```
 {
    "title": "Encounters From Africa",
    "code": "A novel"
+}
+```
+Example of a book JSON object (v2):
+```
+{
+   "title": "Encounters From Africa",
+   "code": "A novel",
+   "book_type": "regular",
+   "daily_rental_charge": 1.5
 }
 ```
 
@@ -94,6 +103,9 @@ $ pip3 install -r requirements.txt
 $ python3 manage.py makemigrations books
 $ python3 manage.py migrate
 
+# delete previous migrations so as to redo migrations
+$ python3 manage.py migrate books zero 
+
 # run app
 $ python3 manage.py runserver
 
@@ -108,10 +120,16 @@ For python deployment your app should now be running on [127.0.0.1:8000](http://
 [localhost:8000](http://127.0.0.1:8000/) 
 For heroku deployment your app should now be running on [localhost:5000](http://localhost:5000/) or [0.0.0.0:5000](http://localhost:5000/) .
 
-## Deploying to Heroku
+## Deploying to Heroku 
 
 ```sh
+# version 1, story 1
 $ heroku create bookstore-service-v1
+# version 2, story 2
+$ heroku create bookstore-service-v2
+# version 2, story 2
+$ heroku create bookstore-service-v3
+
 $ git push heroku master
 
 $ heroku run python manage.py migrate

@@ -2,6 +2,9 @@ from rest_framework import serializers
 from books.models import Book, Rental
 from django.http import Http404
 from pprint import pprint
+import json
+from decimal import Decimal
+import decimal
 
 
 class BookSerializer(serializers.Serializer):
@@ -9,6 +12,8 @@ class BookSerializer(serializers.Serializer):
     title = serializers.CharField(required=True, max_length=100)
     code = serializers.CharField(style={'base_template': 'textarea.html'})
     created = serializers.DateTimeField(read_only=True)
+    book_type =serializers.CharField(required=True, max_length=100)
+    daily_rental_charge =serializers.DecimalField(required=True, max_digits=5, decimal_places=2)
 
 
     def create(self, validated_data):
@@ -40,6 +45,11 @@ class RentalSerializer(serializers.Serializer):
             return Book.objects.get(pk=id)
         except Book.DoesNotExist:
             raise Http404
+    
+    def _convert_decimal_to_float(self,value):
+        if isinstance(value, decimal.Decimal):
+            return float(value)
+        return value
 
     def _calculate_rental_cost(self, validated_data):
         basic_cost = 0
@@ -50,9 +60,16 @@ class RentalSerializer(serializers.Serializer):
             query_filter = dict(id=book["id"])
             bookModel = self.get_book(book["id"])
             book_data = book
-            basic_cost = 1
+            basic_cost = bookModel.daily_rental_charge
             total_cost = total_cost + (basic_cost*book["duration"])
-            book_data.update({"rental_charge": basic_cost*book["duration"],"book_title":bookModel.title})
+            book_data.update(
+                {
+                "rental_charge": self._convert_decimal_to_float(basic_cost*book["duration"]),
+                "book_title":bookModel.title,
+                "book_type":bookModel.book_type,
+                "basic_cost": self._convert_decimal_to_float(basic_cost)
+                }
+            )
             books_data.append(book_data)
         validated_data["total_rental_charge"] = total_cost
         return validated_data
