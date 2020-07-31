@@ -6,7 +6,7 @@ class BookTest(TestCase):
     """ Test module for Book model """
     def setUp(self):
         Book.objects.create(
-            title='Gifted Hands', code='Biography101')
+            title='Gifted Hands', code='Biography101', book_type='regular',daily_rental_charge=1.5)
     
     def test_book_created(self):
         gifted_book = Book.objects.get(title='Gifted Hands')

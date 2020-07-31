@@ -7,7 +7,8 @@ class Book(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField(max_length=100, blank=False)
     code = models.TextField()
-    
+    book_type = models.CharField(max_length=100, blank=False)
+    daily_rental_charge = models.DecimalField(decimal_places=4,max_digits=25,blank=False)
 
     class Meta:
         ordering = ['title']
