@@ -25,6 +25,42 @@ Example of a book JSON object (v2):
 }
 ```
 
+Example of a book JSON object (v3):
+1. Step range type like for Regular and Novel
+```
+{
+   "title": "Encounters From Africa",
+   "code": "A novel",
+   "book_type": "regular",
+   "daily_rental_charge": {
+       "minimum_rental_charge":1.5,
+       "rate":{
+           "type":"step_range",
+           "fixed_rate_days":2,
+           "fixed_rate_rate":1,
+           "extra_days_daily_charge":1.5
+           }
+   }
+}
+```
+1. Step range type like for Regular and Novel
+```
+{
+   "title": "Encounters From Africa",
+   "code": "A novel",
+   "book_type": "regular",
+   "daily_rental_charge": {
+       "minimum_rental_charge":1.5,
+       "rate":{
+           "type":"fixed",
+           "fixed_rate_days":0,
+           "fixed_rate_rate":1,
+           "extra_days_daily_charge":0
+           }
+   }
+}
+```
+
 Example of a book rental JSON object:
 ```
 {
