@@ -8,7 +8,7 @@ class Book(models.Model):
     title = models.CharField(max_length=100, blank=False)
     code = models.TextField()
     book_type = models.CharField(max_length=100, blank=False)
-    daily_rental_charge = models.DecimalField(decimal_places=4,max_digits=25,blank=False)
+    daily_rental_charge = jsonfield.JSONField(blank=False, default={})
 
     class Meta:
         ordering = ['title']
