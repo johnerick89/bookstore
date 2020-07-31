@@ -119,7 +119,7 @@ $ heroku open
 ```
 
 Heroku deployments created as (version1, story 1):
-https://infinite-anchorage-41709.herokuapp.com/ | https://git.heroku.com/infinite-anchorage-41709.git
+https://bookstore-service-v1.herokuapp.com
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
