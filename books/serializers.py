@@ -52,7 +52,7 @@ class RentalSerializer(serializers.Serializer):
             book_data = book
             basic_cost = 1
             total_cost = total_cost + (basic_cost*book["duration"])
-            book_data.update({"rental_charge": basic_cost*book["duration"]})
+            book_data.update({"rental_charge": basic_cost*book["duration"],"book_title":bookModel.title})
             books_data.append(book_data)
         validated_data["total_rental_charge"] = total_cost
         return validated_data
