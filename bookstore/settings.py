@@ -25,7 +25,11 @@ SECRET_KEY = '5ft1vswocf1y6@e9jzns%3c_@-4gn%(%6ll$)k655d&q*y5ic3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["0.0.0.0","localhost","bookstore-service-v1.herokuapp.com"]
+ALLOWED_HOSTS = ["0.0.0.0",
+                "localhost",
+                "bookstore-service-v1.herokuapp.com",
+                "bookstore-service-v2.herokuapp.com",
+                "bookstore-service-v3.herokuapp.com"]
 
 
 # Application definition

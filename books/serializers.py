@@ -66,8 +66,7 @@ class RentalSerializer(serializers.Serializer):
                 {
                 "rental_charge": self._convert_decimal_to_float(basic_cost*book["duration"]),
                 "book_title":bookModel.title,
-                "book_type":bookModel.book_type,
-                "basic_cost": self._convert_decimal_to_float(basic_cost)
+                "book_type":bookModel.book_type
                 }
             )
             books_data.append(book_data)
